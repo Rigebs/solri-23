@@ -1,0 +1,25 @@
+---
+export interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<div class="quote">
+  <blockquote>
+    <p>"{text}"</p>
+  </blockquote>
+  <style>
+    .quote {
+      font-style: italic;
+      text-align: center;
+      margin: 2rem 0;
+      color: #b56576;
+    }
+
+    .quote p {
+      font-size: 1.5rem;
+    }
+  </style>
+</div>
