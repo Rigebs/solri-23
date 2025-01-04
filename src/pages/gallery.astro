@@ -1,0 +1,227 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GalleryComponent from "../components/Gallery.astro";
+
+const title = "Galería de Recuerdos";
+const description =
+  "Aquí están algunos de los momentos más especiales que hemos compartido.";
+
+const images = [
+  { src: "/images/gallery-1.jpg", alt: "Momento 1" },
+  { src: "/images/gallery-2.jpg", alt: "Momento 2" },
+  { src: "/images/gallery-3.jpg", alt: "Momento 3" },
+  { src: "/images/gallery-4.jpg", alt: "Momento 4" },
+  { src: "/images/gallery-5.jpg", alt: "Momento 5" },
+  { src: "/images/gallery-6.jpg", alt: "Momento 6" },
+  { src: "/images/gallery-7.jpg", alt: "Momento 7" },
+  { src: "/images/gallery-8.jpg", alt: "Momento 8" },
+];
+---
+
+<Layout title={title} description={description}>
+  <div style="max-width: 800px; margin: 0 auto;">
+    <GalleryComponent images={images} />
+
+    <!-- Sección de comentarios -->
+    <section class="comments">
+      <h3>Deja tu comentario</h3>
+
+      <!-- Formulario de comentarios -->
+      <form id="comment-form">
+        <textarea
+          id="comment-text"
+          placeholder="Escribe aquí tus pensamientos..."
+          rows="4"></textarea>
+        <div class="actions">
+          <button type="submit" class="submit-button">Enviar comentario</button>
+        </div>
+      </form>
+
+      <h4>Comentarios:</h4>
+      <ul id="comments-list" class="comments-list">
+        <!-- Comentarios dinámicos aparecerán aquí -->
+      </ul>
+    </section>
+
+    <!-- Imágenes destacadas -->
+    <section class="highlighted-images">
+      <h3>Imágenes Destacadas</h3>
+      <div class="image-container">
+        <div class="image-wrapper">
+          <img src="/images/highlighted-1.jpg" alt="Destacada 1" />
+        </div>
+        <div class="image-wrapper">
+          <img src="/images/highlighted-2.jpg" alt="Destacada 2" />
+        </div>
+        <div class="image-wrapper">
+          <img src="/images/highlighted-3.jpg" alt="Destacada 3" />
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  /* Estilo para la sección de comentarios */
+  .comments {
+    margin-top: 3rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .comments h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: none;
+    font-size: 1rem;
+  }
+
+  textarea:focus {
+    border-color: #ffcdb2;
+    outline: none;
+  }
+
+  .actions {
+    margin-top: 1rem;
+    text-align: right;
+  }
+
+  .submit-button {
+    background-color: #ff9a8b;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .submit-button:hover {
+    background-color: #ffcdb2;
+  }
+
+  .comments-list {
+    margin-top: 2rem;
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .comments-list li {
+    background-color: #ffffff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .comments-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .comment-author {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .comment-text {
+    color: #555;
+    font-size: 1rem;
+  }
+
+  /* Estilo para las imágenes destacadas */
+  .highlighted-images {
+    margin-top: 3rem;
+  }
+
+  .highlighted-images h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .image-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+
+  .image-wrapper {
+    width: 32%;
+    height: 200px; /* Definir altura para un mejor control */
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen mantenga la proporción */
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .image-wrapper img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+<script>
+  // Obtenemos elementos del DOM
+  const commentForm = document.getElementById("comment-form");
+  const commentText = document.getElementById(
+    "comment-text"
+  ) as HTMLTextAreaElement; // Type assertion
+  const commentsList = document.getElementById("comments-list");
+
+  if (commentForm && commentText && commentsList) {
+    // Función para manejar el envío de comentarios
+    commentForm.addEventListener("submit", (event) => {
+      event.preventDefault(); // Evita que la página se recargue
+
+      // Si el comentario no está vacío
+      if (commentText.value.trim()) {
+        // Usamos `.value` aquí sin error
+        // Crear un nuevo comentario
+        const newComment = document.createElement("li");
+        newComment.classList.add("comment");
+
+        // Crear el autor y el texto del comentario
+        const commentAuthor = document.createElement("p");
+        commentAuthor.classList.add("comment-author");
+        commentAuthor.textContent = "Tú"; // Podrías pedir al usuario su nombre
+
+        const commentContent = document.createElement("p");
+        commentContent.classList.add("comment-text");
+        commentContent.textContent = commentText.value;
+
+        // Agregar el autor y el comentario al nuevo elemento
+        newComment.appendChild(commentAuthor);
+        newComment.appendChild(commentContent);
+
+        // Agregar el nuevo comentario a la lista de comentarios
+        commentsList.appendChild(newComment);
+
+        // Limpiar el campo de texto después de enviar el comentario
+        commentText.value = "";
+      }
+    });
+  }
+</script>

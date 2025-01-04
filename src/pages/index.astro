@@ -1,78 +1,68 @@
 ---
+import Layout from "../layouts/Layout.astro";
 import Quote from "../components/Quote.astro";
 import Gallery from "../components/Gallery.astro";
+
+const title = "Para mi Sol";
+const description = "Bienvenida a este pequeño rincón que he creado para ti.";
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Para mi Sol</title>
-    <link rel="stylesheet" href="/styles/custom.css" />
-  </head>
-  <body>
-    <header class="header">
-      <nav class="navbar">
-        <ul class="nav-list">
-          <li><a href="/" class="nav-link">Inicio</a></li>
-          <li><a href="/about" class="nav-link">Sobre Nosotros</a></li>
-          <li><a href="/gallery" class="nav-link">Galería</a></li>
-          <li><a href="/contact" class="nav-link">Mensajes</a></li>
-        </ul>
-      </nav>
-    </header>
+<Layout title={title} description={description}>
+  <section class="hero">
+    <h1 class="hero-title">Hola, Solecin 🌸</h1>
+    <p class="hero-text">
+      Bienvenida a este pequeño rincón que he creado para ti. ❤️
+    </p>
+    <img src="/images/tu.jpg" alt="Una imagen especial" class="hero-image" />
+  </section>
 
-    <main>
-      <section class="hero">
-        <h1 class="hero-title">Hola, Solecin 🌸</h1>
-        <p class="hero-text">
-          Bienvenida a este pequeño rincón que he creado para ti. ❤️
-        </p>
-        <img
-          src="/images/tu.jpg"
-          alt="Una imagen especial"
-          class="hero-image"
-        />
-      </section>
+  <section class="quote-section">
+    <Quote
+      text="Eres mi sol en los días grises, mi estrella en las noches oscuras."
+    />
+  </section>
 
-      <section class="quote-section">
-        <Quote
-          text="Eres mi sol en los días grises, mi estrella en las noches oscuras."
-        />
-      </section>
+  <section class="gallery-preview">
+    <h2 class="section-title">Recuerdos Especiales</h2>
+    <p class="section-description">
+      Un adelanto de algunos de nuestros momentos favoritos.
+    </p>
+    <Gallery
+      images={[
+        { src: "/images/gallery-1.jpg", alt: "Momento 1" },
+        { src: "/images/gallery-2.jpg", alt: "Momento 2" },
+        { src: "/images/gallery-3.jpg", alt: "Momento 3" },
+      ]}
+    />
+    <a href="/gallery" class="button">Ver Más</a>
+  </section>
+  <style>
+    .hero {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
 
-      <section class="gallery-preview">
-        <h2 class="section-title">Recuerdos Especiales</h2>
-        <p class="section-description">
-          Un adelanto de algunos de nuestros momentos favoritos.
-        </p>
-        <Gallery
-          images={[
-            { src: "/images/gallery-1.jpg", alt: "Momento 1" },
-            { src: "/images/gallery-2.jpg", alt: "Momento 2" },
-            { src: "/images/gallery-3.jpg", alt: "Momento 3" },
-          ]}
-        />
-        <a href="/gallery" class="button">Ver Más</a>
-      </section>
-    </main>
+    .button {
+      display: inline-block;
+      padding: 12px 24px;
+      margin-top: 1.5rem;
+      background-color: #ff9a8b; /* Color cálido que combina con el tema */
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 30px; /* Bordes redondeados */
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
 
-    <footer class="footer">
-      <p>Con todo mi amor, <strong>tu amor</strong>. ❤️</p>
-    </footer>
-  </body>
-</html>
-<style>
-  .hero {
-    text-align: center;
-    padding: 2rem 1rem;
-  }
-
-  .hero-image {
-    margin: 0 auto; /* Centra horizontalmente */
-    display: block; /* Asegura que se comporte como un bloque */
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 80%; /* Asegura que no sea demasiado grande en pantallas pequeñas */
-  }
-</style>
+    .hero-image {
+      margin: 0 auto; /* Centra horizontalmente */
+      display: block; /* Asegura que se comporte como un bloque */
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 80%; /* Asegura que no sea demasiado grande en pantallas pequeñas */
+    }
+  </style>
+</Layout>

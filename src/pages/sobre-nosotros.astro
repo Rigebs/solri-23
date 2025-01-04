@@ -1,0 +1,96 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const title = "Sobre Nosotros";
+const description =
+  "Un pequeño espacio para ti, mi amor, para recordarnos lo que somos juntos.";
+---
+
+<Layout title={title} description={description}>
+  <div class="about-us-container">
+    <section class="our-story">
+      <h2>Nuestra Historia</h2>
+      <p>
+        Desde el primer día que me di cuenta que sentía algo muy bonito y
+        hermoso por ti, desde aquel dia, toda mi vida cambió... y para bien.
+        Cada día contigo es una aventura, un regalo. Hemos creado recuerdos
+        juntos que siempre llevaré en mi corazón. Solo me queda decirte que te
+        amo con todo mi ser, y que siempre estaré para ti, mi amor. Gracias por
+        todo lo que has hecho por mí, se que yo no hago mucho, no te doy muchos
+        regalos como tu lo haces, pero quisiera que a pesar de eso no dudes de
+        mi amor.
+      </p>
+      <img
+        src="/images/our-story.jpg"
+        alt="Nuestra Historia"
+        class="story-image"
+      />
+    </section>
+
+    <section class="our-love">
+      <h2>Lo que Significas para Mí</h2>
+      <p>
+        Eres mi compañera, mi amiga, mi confidente. No hay día en el que no
+        agradezca tenerte a mi lado. Lo que compartimos va más allá de las
+        palabras, es algo que siento con cada latido de mi corazón.
+      </p>
+    </section>
+
+    <section class="our-dreams">
+      <h2>Nuestros Sueños</h2>
+      <p>
+        Sueño con construir más momentos juntos, con seguir creciendo y
+        aprendiendo. El futuro que imagino es a tu lado, porque no hay nadie más
+        con quien prefiera vivir esta vida.
+      </p>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .about-us-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .intro-text {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: #ff9a8b;
+  }
+
+  .story-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-top: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+  }
+
+  .our-love {
+    margin-top: 20px;
+  }
+
+  .our-love p,
+  .our-dreams p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+  }
+</style>
