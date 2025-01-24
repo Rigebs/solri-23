@@ -1,5 +1,7 @@
 ---
-const { title, description, children } = Astro.props;
+import Navbar from "../components/Navbar.astro";
+
+const { title, description } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 
@@ -9,36 +11,10 @@ const currentPath = Astro.url.pathname;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <link rel="stylesheet" href="/styles/custom.css" />
+    <link rel="icon" type="image/png" href="/images/rose.svg" />
   </head>
   <body>
-    <header class="header">
-      <nav class="navbar">
-        <ul class="nav-list">
-          <li>
-            <a
-              href="/"
-              class={`nav-link ${currentPath === "/" ? "active" : ""}`}
-              >Inicio</a
-            >
-          </li>
-          <li>
-            <a
-              href="/sobre-nosotros"
-              class={`nav-link ${currentPath === "/sobre-nosotros" ? "active" : ""}`}
-              >Sobre Nosotros</a
-            >
-          </li>
-          <li>
-            <a
-              href="/gallery"
-              class={`nav-link ${currentPath === "/gallery" ? "active" : ""}`}
-              >Galería</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
-
+    <Navbar />
     <main>
       <section class="content">
         <h1>{title}</h1>
@@ -57,10 +33,5 @@ const currentPath = Astro.url.pathname;
   .content {
     padding: 2rem 1rem;
     text-align: center;
-  }
-
-  .nav-link.active {
-    border-bottom: 2px solid #ffcdb2;
-    padding-bottom: 0.2rem;
   }
 </style>

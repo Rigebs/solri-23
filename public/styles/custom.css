@@ -1,11 +1,9 @@
-/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Estilo Global */
 body {
   font-family: "Arial", sans-serif;
   background-color: #fefae0;
@@ -33,28 +31,9 @@ button {
   cursor: pointer;
 }
 
-/* Estilo de la Página */
-.header {
-  background-color: #b56576;
-  padding: 1rem;
-  text-align: center;
-}
-
-.navbar .nav-list {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-.navbar .nav-link {
-  color: white;
-  font-size: 1.1rem;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-.navbar .nav-link:hover {
-  color: #ffcdb2;
+.container {
+  max-width: 1800px;
+  margin: 0 auto;
 }
 
 .hero {

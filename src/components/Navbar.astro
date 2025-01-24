@@ -1,0 +1,149 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header">
+  <nav class="navbar">
+    <div class="container">
+      <ul class="nav-list">
+        <li>
+          <a href="/" class={`nav-link ${currentPath === "/" ? "active" : ""}`}>
+            Inicio
+          </a>
+        </li>
+        <li>
+          <a
+            href="/sobre-nosotros"
+            class={`nav-link ${currentPath === "/sobre-nosotros" ? "active" : ""}`}
+          >
+            Sobre Nosotros
+          </a>
+        </li>
+        <li>
+          <a
+            href="/gallery"
+            class={`nav-link ${currentPath === "/gallery" ? "active" : ""}`}
+          >
+            Galería
+          </a>
+        </li>
+      </ul>
+      <img class="bear" src="/images/bear.svg" />
+      <img id="toggleMenu" class="menu" src="/images/menu.svg" />
+    </div>
+  </nav>
+</header>
+
+<style>
+  .header {
+    background-color: rgb(173, 37, 37);
+    padding: 12px;
+    text-align: center;
+    border-bottom-left-radius: 13px;
+    border-bottom-right-radius: 13px;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    height: 2.5rem;
+    position: relative;
+  }
+
+  .navbar .nav-link {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  .nav-list {
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .navbar .nav-link:hover {
+    color: #ffcdb2;
+  }
+
+  .nav-link.active {
+    border-bottom: 2px solid #ffcdb2;
+    padding-bottom: 0.2rem;
+  }
+
+  .container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+
+  .bear {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    height: 100%;
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px;
+    z-index: 2;
+  }
+
+  .menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    height: 100%;
+    border-radius: 50%;
+    padding: 5px;
+    z-index: 2;
+  }
+
+  @media (max-width: 768px) {
+    .menu {
+      display: block;
+      cursor: pointer;
+    }
+
+    .nav-list {
+      display: none;
+      flex-direction: column;
+      position: inherit;
+      height: 180px;
+      background-color: #7aa4e0;
+      top: 52px;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+
+    .navbar .nav-link {
+      color: #ffffff;
+    }
+
+    .navbar .nav-link:hover {
+      color: #40466f;
+    }
+
+    .nav-link.active {
+      border-bottom: 2px solid rgb(47 69 116);
+    }
+
+    .nav-list.show {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  const toggleMenu = document.getElementById("toggleMenu");
+  const navList = document.querySelector(".nav-list");
+
+  toggleMenu?.addEventListener("click", () => {
+    navList?.classList.toggle("show");
+  });
+</script>
